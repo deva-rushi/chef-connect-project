@@ -52,12 +52,23 @@ public class SignupController {
         }
 
         if (!isValidUsername(username)) {
-            showAlert(Alert.AlertType.ERROR, "Signup Failed", "Username must be 3-20 characters, alphanumeric with underscores.");
+            showAlert(Alert.AlertType.ERROR, "Signup Failed",
+                    "Username must be 3-20 characters and can only contain:\n" +
+                    "- Uppercase letters (A-Z)\n" +
+                    "- Lowercase letters (a-z)\n" +
+                    "- Numbers (0-9)\n" +
+                    "- Underscores (_)");
             return;
         }
 
         if (!isValidPassword(password)) {
-            showAlert(Alert.AlertType.ERROR, "Signup Failed", "Password must be at least 8 characters, containing letters, numbers, and symbols.");
+            showAlert(Alert.AlertType.ERROR, "Signup Failed",
+                    "Password must be at least 8 characters and contain:\n" +
+                    "- At least one digit (0-9)\n" +
+                    "- At least one lowercase letter (a-z)\n" +
+                    "- At least one uppercase letter (A-Z)\n" +
+                    "- At least one special character from @#$%^&+=!\n" +
+                    "- No whitespace");
             return;
         }
 
